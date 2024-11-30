@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="/frontend/static/pages/css/styles.css">
+    <link rel="icon" type="image/png" href="/frontend/static/images/paypal_mug.jpg">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Thank You for Your Purchase!</h1>
+        <p>Your transaction was completed successfully.</p>
+        <p><strong>Transaction ID:</strong> <span id="transaction-id"></span></p>
+        <a href="/frontend/index.html" class="button">Return to Store</a>
+    </div>
+
+    <script>
+        // Extract the transaction ID from the URL query parameter
+        const params = new URLSearchParams(window.location.search);
+        const transactionID = params.get('transactionID');
+        document.getElementById('transaction-id').textContent = transactionID || 'Unknown';
+    </script>
+    
+</body>
+
+</html>

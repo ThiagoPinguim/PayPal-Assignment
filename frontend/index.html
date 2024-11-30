@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPal Mug</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="icon" href="static/images/paypal_mug.jpg" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Product Section -->
+        <section id="product">
+            <div class="product-details">
+                <img src="static/images/paypal_mug.jpg" alt="PayPal Mug" class="product-image">
+                <div class="product-info">
+                    <h1 class="product-title">PayPal Mug</h1>
+                    <p class="product-item-number"><strong>Item Number:</strong> 2024</p>
+                    <p class="product-price"><strong>Price:</strong> USD 100.00</p>
+                    <p class="product-description">A beautiful mug with the PayPal logo to enjoy your preferred beverage.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buyer Information Section -->
+        <section id="buyer-info">
+            <h2>Buyer Information</h2>
+            <form id="buyer-form">
+                <input type="text" id="first-name" placeholder="First Name" value="Jane" required>
+                <input type="text" id="last-name" placeholder="Last Name" value="Doe" required>
+                <input type="email" id="email" placeholder="Email" value="jane.doe@example.com" required>
+                <input type="tel" id="phone" placeholder="Phone Number" value="+1234567890" required>
+                <input type="text" id="address-line1" placeholder="Address Line 1" value="123 Elm Street" required>
+                <input type="text" id="address-line2" placeholder="Address Line 2" value="Apt 4B">
+                <input type="text" id="city" placeholder="City" value="Los Angeles" required>
+                <input type="text" id="state" placeholder="State" value="CA" required>
+                <input type="text" id="zip" placeholder="ZIP Code" value="90001" required>
+                <input type="text" id="country" placeholder="Country" value="US" required>
+            </form>
+        </section>
+
+        <!-- PayPal Button Section -->
+        <section id="payment">
+            <div id="paypal-button-container"></div>
+        </section>
+    </div>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AR6XcpOKhMeCB5uuX3FyaH4vWwqp4p4VcMfJEm5E1Een_JLIwOoIiV6ox_ex0SLhECxUO0sJ8Rvtoonm&currency=USD"></script>
+    <script src="static/js/script.js"></script>
+</body>
+
+</html>

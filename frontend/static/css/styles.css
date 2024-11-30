@@ -1,0 +1,80 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container Styling */
+.container {
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Product Section */
+.product-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.product-image {
+    max-width: 30%;
+    border-radius: 5px;
+}
+
+.product-info {
+    text-align: left;
+}
+
+.product-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #0070ba;
+}
+
+.product-item-number,
+.product-price,
+.product-description {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Buyer Info Section */
+#buyer-info h2 {
+    font-size: 20px;
+    color: #0070ba;
+    margin: 15px 0;
+}
+
+#buyer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#buyer-form input,
+#buyer-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 14px;
+}
+
+/* PayPal Button Section */
+#paypal-button-container {
+    margin-top: 20px;
+}
