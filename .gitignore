@@ -1,6 +1,2 @@
 # Node.js
 node_modules/
-.env
-
-# Frontend build files (if any)
-/frontend/dist/

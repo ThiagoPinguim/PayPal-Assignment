@@ -1,33 +1,60 @@
-# PayPal Assignment Backend
+# **PayPal Assignment Backend**
 
-This is the **backend** service for the PayPal Assignment project. It provides API endpoints to create and capture orders using the **PayPal REST API**. The backend is built using **Node.js** and **Express.js**, and integrates seamlessly with the frontend to handle payment processing and buyer information.
+This project implements the backend for a simple **PayPal** Checkout web application. The application allows users to simulate a basic shopping cart, complete a payment process using PayPal's API, and displays a thank-you message with the transaction ID after successful payment.
 
 ---
 
 ## **Features**
-- **Create Order**: Generates a PayPal order with buyer and shipping details.
-- **Capture Order**: Completes the payment process after buyer approval.
-- **Health Check**: Provides a simple endpoint to check server status.
-- **Frontend Integration**: Serves the frontend files and facilitates end-to-end functionality.
+
+- Simulates a shopping cart with product details and buyer information.
+- Integrates with the PayPal API for secure payments using OAuth2 authentication.
+- Provides endpoints to:
+  - Create orders
+  - Capture payments
+- Displays a thank-you page with transaction details upon successful payment.
+- Includes a health check endpoint to ensure server availability.
 
 ---
 
-## **Technologies Used**
-- **Node.js**: Backend runtime environment.
-- **Express.js**: Framework for building RESTful APIs.
-- **Axios**: HTTP client for making API requests.
-- **dotenv**: Manages environment variables.
-- **CORS**: Enables cross-origin requests.
-- **Body-parser**: Parses incoming JSON payloads.
+## **Technology Stack**
+
+- **Node.js**: Backend framework.
+- **Express**: HTTP server framework.
+- **Axios**: HTTP client for API calls.
+- **PayPal API**: Payment processing.
+- **dotenv**: Environment variable management.
+- **body-parser**: Parsing incoming request bodies.
+- **cors**: Cross-origin resource sharing.
 
 ---
 
-## **Folder Structure**
-backend/
-├── server.js               # Main backend file
-├── package.json            # Backend dependencies
-├── package-lock.json       # Locked dependencies
-├── app.yaml                # Google Cloud App Engine config
-├── .env                    # Environment variables
-├── .gitignore              # Ignored files for backend
-└── README.md               # Backend-specific documentation
+## **Project Structure**
+
+paypal_assignment/
+├── backend/
+│   ├── .env                  # Environment variables
+│   ├── .gitignore            # Files to ignore in Git
+│   ├── package.json          # Project metadata and dependencies
+│   ├── package-lock.json     # Dependency lock file
+│   ├── server.js             # Main server code
+│   └── README.md             # Project documentation (this file)
+
+---
+
+## **Repository**
+
+- [GitHub Repository](https://github.com/ThiagoPinguim/PayPal_Assignment/tree/main/backend)
+
+---
+
+## **Deployment**
+
+This project is deployed on Render. You can access the live backend via URL: https://paypal-assignment-ug0o.onrender.com/
+
+---
+
+**Contact**
+Author: Thiago Eugenio Barbosa de Castro
+Email: [thiago.castro.paypal@gmail.com]
+Feel free to reach out for questions or suggestions!
+Cheers!
