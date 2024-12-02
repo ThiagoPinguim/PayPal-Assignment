@@ -47,12 +47,12 @@ app.post("/create-order", async (req, res) => {
         addressLine2,
         city,
         state,
-        zip,
+        zipCode,
         country
     } = req.body.buyerInfo;
 
     // Validate ZIP Code for US
-    if (country === "US" && !/^\d{5}$/.test(zip)) {
+    if (country === "US" && !/^\d{5}$/.test(zipCode)) {
         return res.status(400).json({ error: "Invalid ZIP Code format for US" });
     }
 
@@ -74,7 +74,7 @@ app.post("/create-order", async (req, res) => {
                             address_line_2: addressLine2,
                             admin_area_2: city,
                             admin_area_1: state,
-                            postal_code: zip,
+                            postal_code: zipCode,
                             country_code: country
                         }
                     }
@@ -97,7 +97,7 @@ app.post("/create-order", async (req, res) => {
                     address_line_2: addressLine2,
                     admin_area_2: city,
                     admin_area_1: state,
-                    postal_code: zip,
+                    postal_code: zipCode,
                     country_code: country
                 }
             }
