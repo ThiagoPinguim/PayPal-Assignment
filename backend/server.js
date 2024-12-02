@@ -24,7 +24,7 @@ app.get("/thankyou", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend/static/pages/thankyou.html"));
 });
 
-// Helper: Get PayPal Access Token
+// Get PayPal Access Token
 async function getAccessToken() {
     const auth = Buffer.from(`${process.env.PAYPAL_CLIENT_ID}:${process.env.PAYPAL_CLIENT_SECRET}`).toString("base64");
     const response = await axios.post(`${process.env.PAYPAL_API_BASE_URL}/v1/oauth2/token`, "grant_type=client_credentials", {
@@ -129,6 +129,13 @@ app.post("/create-order", async (req, res) => {
 app.post("/capture-order", async (req, res) => {
     const { orderID } = req.body;
 
+    if (!orderID) {
+        console.error("Missing orderID in request body.");
+        return res.status(400).json({ error: "Missing orderID" });
+    }
+
+    console.log("Order ID received for capture:", orderID);
+
     try {
         const accessToken = await getAccessToken();
         const response = await axios.post(
@@ -143,8 +150,8 @@ app.post("/capture-order", async (req, res) => {
         );
 
         const transactionID = response.data.purchase_units[0].payments.captures[0].id;
+        console.log("Transaction ID:", transactionID);
 
-        console.log(`Redirecting to: /static/pages/thankyou.html?transactionID=${transactionID}`);
         res.redirect(`/static/pages/thankyou.html?transactionID=${transactionID}`);
     } catch (error) {
         console.error("Error capturing order:", error.response?.data || error.message);

@@ -41,29 +41,32 @@ paypal.Buttons({
         }
     },
 
-    onApprove: async function (data) {
-        try {
-            // Call the backend to capture the order
-            const response = await fetch("https://paypal-assignment-ug0o.onrender.com/capture-order", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    orderID: data.orderID
-                })
+    onApprove: async (data, actions) => {
+        console.log("Order ID:", data.orderID);
+        return fetch(captureOrderUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ orderID: data.orderID })
+        })
+            .then((response) => {
+                if (response.redirected) {
+                    // Handle backend redirect
+                    console.log("Redirecting to:", response.url);
+                    window.location.href = response.url;
+                    return;
+                }
+                return response.json();
+            })
+            .then((captureData) => {
+                if (captureData.error) {
+                    throw new Error(captureData.error);
+                }
+            })
+            .catch((err) => {
+                console.error("Error during capture-order:", err);
+                alert("Failed to capture order. Check the console for details.");
             });
-
-            const captureData = await response.json();
-            if (response.ok && captureData.status === "COMPLETED") {
-                window.location.href = `/static/pages/thankyou.html?transactionID=${captureData.id}`;
-            } else {
-                console.error("Error capturing order:", captureData);
-                alert("Failed to capture order.");
-            }
-        } catch (error) {
-            console.error("Error capturing order:", error);
-            alert("Failed to capture order. Please try again.");
-        }
-    }
+    },    
 }).render("#paypal-button-container");
