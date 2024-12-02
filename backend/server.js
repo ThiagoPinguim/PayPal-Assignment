@@ -51,6 +51,14 @@ app.post("/create-order", async (req, res) => {
         country
     } = req.body.buyerInfo;
 
+    // Validate ZIP Code for US
+    if (country === "US" && !/^\d{5}$/.test(zip)) {
+        return res.status(400).json({ error: "Invalid ZIP Code format for US" });
+    }
+
+    // Sanitize phone number to contain only digits
+    const sanitizedPhone = phone.replace(/\D/g, "");
+
     try {
         const orderData = {
             intent: "CAPTURE",
@@ -81,7 +89,7 @@ app.post("/create-order", async (req, res) => {
                 phone: {
                     phone_type: "MOBILE",
                     phone_number: {
-                        national_number: phone
+                        national_number: sanitizedPhone
                     }
                 },
                 address: {
@@ -94,6 +102,9 @@ app.post("/create-order", async (req, res) => {
                 }
             }
         };
+
+        // Log payload for debugging
+        console.log("Order Data:", JSON.stringify(orderData, null, 2));
 
         const accessToken = await getAccessToken();
         const response = await axios.post(
