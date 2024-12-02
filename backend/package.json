@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Backend for PayPal Assignment",
     "main": "server.js",
+    "license": "UNLICENSED",
     "scripts": {
         "start": "node server.js"
     },
@@ -15,5 +16,5 @@
     },
     "engines": {
         "node": ">=18.0.0"
-    }
+    }    
 }
